@@ -6,25 +6,29 @@
     <title>Quiz App</title>
   </head>
   <body>
+    
+    <span class="timer">30</span>
     <div class="quiz-container" id="quiz">
       <div class="quiz-header">
-        <h2 id="question">Question text</h2>
+        <h2 id="question">Press the start button to start the quiz</h2>
         <div class="answer-container">
           
-            <button id="a" class="answer" button>
-            
-
-            <button id="b" class="answer" button>
-            
-
-            <button id="c" class="answer" button>
-            
-
-            <button id="d" class="answer" button>
-            
+            <button style="display: none" id="a" class="answer" button>
+            <button style="display: none" id="b" class="answer" button>
+            <button style="display: none" id="c" class="answer" button>
+            <button style="display: none" id="d" class="answer" button>
+          
           </li>
         </div>
       </div>
+    </div>
+    <button class="start">Start</button>
+    <button style="display: none" class="start">Restart</button>
+    <div class="results">
+      <input  style="display: none" type="text">
+      <span class="time"></span>
+      <span class="correct"></span>
+      <span class="name"></span>
     </div>
     <script src="/assets/js/script.js"></script>
   </body>

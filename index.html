@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>Quiz App</title>
   </head>
   <body>
     
-    <span class="timer">30</span>
+
     <div class="quiz-container" id="quiz">
       <div class="quiz-header">
         <h2 id="question">Press the start button to start the quiz</h2>
@@ -22,8 +23,11 @@
         </div>
       </div>
     </div>
-    <button class="start">Start</button>
-    <button style="display: none" class="start">Restart</button>
+    <div class="btn"><span class="timer">30</span>
+      <button class="start">Start</button>
+      <button style="display: none" class="start">Restart</button>
+    </div>
+  
     <div class="results">
       <input  style="display: none" type="text">
       <span class="time"></span>

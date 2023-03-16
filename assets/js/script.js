@@ -38,6 +38,7 @@ var timerCount;
 var currentQ = 0;
 var storedName;
 timerCount = 30;
+timerElement.style.display = "none";
 
 function startQuiz() {
   currentQ = 0;
@@ -45,6 +46,8 @@ function startQuiz() {
   timerCount = 30;
   correctAnswers.style.display = "none";
   timeScore.style.display = "none";
+  startButton.style.display = "none";
+  inputedName.style.display = "None";
   questionEl.style.display = "inline";
   timerElement.style.display = "inline";
   timerElement.innerHTML = 30;
@@ -72,6 +75,7 @@ function btnClick(e) {
     winCounter++;
   } else {
     alert("That's incorrect...");
+    timerCount -= 10;
   }
   currentQ++;
   loadQuiz();
@@ -95,12 +99,15 @@ function inputValue(e) {
     correctAnswers.style.display = "inline";
     timeScore.style.display = "inline";
     inputedName.style.display = "inline";
+    startButton.style.display = "inline";
+    startButton.innerText = "Restart";
 
     correctAnswers.textContent = winCounter;
     timeScore.textContent = timerCount;
     inputedName.textContent = input.value;
     localName = input.value;
     input.style.display = "none";
+
     setScore();
   }
 }

@@ -22,16 +22,7 @@ body > div {
 
 .answer-container {
   display: block;
-}
-.start-button {
-  display: flex;
-  justify-content: center;
-}
-
-.start {
-  border: 1px solid black;
-  background-color: white;
-  justify-content: center;
+  margin-bottom: 2rem;
 }
 
 .answer,
@@ -56,6 +47,21 @@ body > div {
   cursor: pointer;
   background-color: black;
   color: white;
+}
+
+.start-button {
+  display: flex;
+  justify-content: center;
+}
+
+.start {
+  border: 1px solid black;
+  background-color: white;
+  justify-content: center;
+}
+
+.timer {
+  font-weight: 700;
 }
 
 .input-container {

@@ -32,20 +32,20 @@ var timer;
 var timerCount;
 var currentQ = 0;
 var storedName;
-timerCount = 30;
+timerCount = 10;
 timerElement.style.display = "none";
 enter.style.display = "none";
 results.style.display = "none";
 
 function startQuiz() {
   currentQ = 0;
-  timerCount = 30;
+  timerCount = 10;
   results.style.display = "none";
   startButton.style.display = "none";
   quizHeader.style.display = "inline";
   timerElement.style.display = "inline";
 
-  timerElement.innerHTML = 30;
+  timerElement.innerHTML = "Timer: " + 10;
 
   loadQuiz();
   startTimer();
@@ -68,7 +68,7 @@ function btnClick(e) {
     alert("That's correct!");
   } else {
     alert("That's incorrect...");
-    timerCount -= 10;
+    timerCount -= 2;
   }
   currentQ++;
   loadQuiz();
@@ -105,7 +105,7 @@ function inputValue(e) {
 function startTimer() {
   timer = setInterval(function () {
     timerCount--;
-    timerElement.textContent = timerCount;
+    timerElement.textContent = "Timer: " + timerCount;
     if (
       (timerCount >= 0 && currentQ === questions.length) ||
       timerCount === 0

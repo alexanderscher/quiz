@@ -18,47 +18,41 @@ const questions = [
     correct: "b",
   },
 ];
-var wordBlank = document.querySelector(".word-blanks");
 var answerEls = document.querySelectorAll(".answer");
 var questionEl = document.getElementById("question");
+var quizHeader = document.querySelector(".quiz-header");
 var startButton = document.querySelector(".start");
 var timerElement = document.querySelector(".timer");
-var correctAnswers = document.querySelector(".correct");
-var wrongAnswers = document.querySelector(".wrong");
-var timeScore = document.querySelector(".time");
 var results = document.querySelector(".results");
-var restartBtn = document.querySelector(".restart");
 var input = document.querySelector("input");
-var inputedName = document.querySelector(".name");
+var enter = document.querySelector(".enter-prompt");
 
 var isWin = false;
-var winCounter = 0;
 var timer;
 var timerCount;
 var currentQ = 0;
 var storedName;
 timerCount = 30;
 timerElement.style.display = "none";
+enter.style.display = "none";
+results.style.display = "none";
 
 function startQuiz() {
   currentQ = 0;
-  winCounter = 0;
   timerCount = 30;
-  correctAnswers.style.display = "none";
-  timeScore.style.display = "none";
+  results.style.display = "none";
   startButton.style.display = "none";
-  inputedName.style.display = "None";
-  questionEl.style.display = "inline";
+  quizHeader.style.display = "inline";
   timerElement.style.display = "inline";
+
   timerElement.innerHTML = 30;
-  answerEls.forEach(function (el) {
-    el.style.display = "inline";
-  });
+
   loadQuiz();
   startTimer();
 }
 
 function loadQuiz() {
+  questionEl.style.textAlign = "start";
   console.log(currentQ);
   if (currentQ < questions.length) {
     questionEl.innerText = questions[currentQ].question;
@@ -72,7 +66,6 @@ function loadQuiz() {
 function btnClick(e) {
   if (e.target.id === questions[currentQ].correct) {
     alert("That's correct!");
-    winCounter++;
   } else {
     alert("That's incorrect...");
     timerCount -= 10;
@@ -86,29 +79,26 @@ answerEls.forEach(function (el) {
 });
 
 function finished() {
-  questionEl.style.display = "none";
+  quizHeader.style.display = "none";
   timerElement.style.display = "none";
-  answerEls.forEach(function (el) {
-    el.style.display = "none";
-  });
+  input.value = "";
   input.style.display = "block";
+  enter.style.display = "block";
 }
 
 function inputValue(e) {
   if (e.key === "Enter") {
-    correctAnswers.style.display = "inline";
-    timeScore.style.display = "inline";
-    inputedName.style.display = "inline";
+    results.style.display = "flex";
     startButton.style.display = "inline";
     startButton.innerText = "Restart";
-
-    correctAnswers.textContent = winCounter;
-    timeScore.textContent = timerCount;
-    inputedName.textContent = input.value;
-    localName = input.value;
     input.style.display = "none";
-
-    setScore();
+    enter.style.display = "none";
+    var winObj = {
+      time: timerCount,
+      initial: input.value,
+    };
+    setWins(winObj);
+    getWins();
   }
 }
 
@@ -126,6 +116,18 @@ function startTimer() {
   }, 1000);
 }
 
-startButton.addEventListener("click", startQuiz);
+function setWins(winObj) {
+  localStorage.setItem("winObj", JSON.stringify(winObj));
+}
 
+function getWins() {
+  var lastScore = JSON.parse(localStorage.getItem("winObj"));
+  if (lastScore !== null) {
+    document.querySelector(".time").textContent = "Time: " + lastScore.time;
+    document.querySelector(".name").textContent =
+      "Initials: " + lastScore.initial;
+  }
+}
+
+startButton.addEventListener("click", startQuiz);
 input.addEventListener("keypress", inputValue);

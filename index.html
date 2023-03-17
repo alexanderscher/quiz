@@ -7,33 +7,40 @@
     <title>Quiz App</title>
   </head>
   <body>
-    
-
     <div class="quiz-container" id="quiz">
       <div class="quiz-header">
         <h2 id="question">Press the start button to start the quiz</h2>
         <div class="answer-container">
-          
             <button style="display: none" id="a" class="answer" button>
             <button style="display: none" id="b" class="answer" button>
             <button style="display: none" id="c" class="answer" button>
             <button style="display: none" id="d" class="answer" button>
-          
-          </li>
         </div>
+        <span class="timer">30</span>
       </div>
+      
+      <div class="results">
+        <div class="score">
+          <span class= 'score-title'>Your Scores</span>
+          <div class = "high-score">
+            <span class="time"></span>
+          <span class="name"></span>
+          </div>
+          
+        </div>
     </div>
-    <div class="btn"><span class="timer">30</span>
-      <button class="start">Start</button>
-      <button style="display: none" class="start">Restart</button>
-    </div>
-  
-    <div class="results">
+    <div class="input-container">
+      <h3 class="enter-prompt">Please enter your initials to see your scores</h3>
       <input  style="display: none" type="text">
-      <span class="time"></span>
-      <span class="correct"></span>
-      <span class="name"></span>
     </div>
+    <div class="start-button"><button class="start">Start</button></div>
+    
+
+    
     <script src="/assets/js/script.js"></script>
+    </div>
+    </div>
+    
+    
   </body>
 </html>

@@ -18,6 +18,7 @@ const questions = [
     correct: "b",
   },
 ];
+
 var answerEls = document.querySelectorAll(".answer");
 var questionEl = document.getElementById("question");
 var quizHeader = document.querySelector(".quiz-header");
@@ -97,8 +98,10 @@ function inputValue(e) {
       time: timerCount,
       initial: input.value,
     };
-    setWins(winObj);
+    document.querySelector(".time").textContent = "Time: " + timerCount;
+    document.querySelector(".name").textContent = "Initials: " + input.value;
     getWins();
+    setWins(winObj);
   }
 }
 
@@ -123,9 +126,12 @@ function setWins(winObj) {
 function getWins() {
   var lastScore = JSON.parse(localStorage.getItem("winObj"));
   if (lastScore !== null) {
-    document.querySelector(".time").textContent = "Time: " + lastScore.time;
-    document.querySelector(".name").textContent =
-      "Initials: " + lastScore.initial;
+    var localTime = document.createElement("span");
+    localTime.textContent = "Time: " + lastScore.time;
+    var localInitials = document.createElement("span");
+    localInitials.textContent = "Initials: " + lastScore.initial;
+    document.querySelector(".high-score").appendChild(localTime);
+    document.querySelector(".high-score").appendChild(localInitials);
   }
 }
 
